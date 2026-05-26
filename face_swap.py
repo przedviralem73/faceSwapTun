@@ -23,9 +23,9 @@ class 人脸替换器:
         """加载要覆盖在人脸上的图片"""
         if 路径 is None or not os.path.exists(路径):
             if 路径:
-                print(f"⚠️  图片未找到: {路径}")
+                print(f"图片未找到: {路径}")
             else:
-                print("⚠️  未指定图片")
+                print("未指定图片")
             print("使用默认笑脸图片")
             # 创建简单的笑脸图片
             图片 = np.zeros((200, 200, 4), dtype=np.uint8)
@@ -124,7 +124,7 @@ def 主函数():
         覆盖路径 = sys.argv[1]
     else:
         print("=" * 50)
-        print("📸 人脸替换摄像头")
+        print("人脸替换摄像头")
         print("=" * 50)
         print("\n使用方法: python face_swap.py <图片路径>")
         print("\n示例:")
@@ -138,7 +138,7 @@ def 主函数():
     摄像头 = cv2.VideoCapture(0)
     
     if not 摄像头.isOpened():
-        print("❌ 错误: 无法打开摄像头")
+        print("错误: 无法打开摄像头")
         print("请确保摄像头已连接且未被其他应用程序使用")
         return
     
@@ -146,8 +146,8 @@ def 主函数():
     摄像头.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
     摄像头.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
     
-    print("✅ 摄像头初始化成功")
-    print("\n⌨️  控制:")
+    print("摄像头初始化成功")
+    print("\n控制:")
     print("   Q 或 ESC - 退出")
     print("   S - 保存截图")
     print("-" * 50)
@@ -156,7 +156,7 @@ def 主函数():
     try:
         替换器 = 人脸替换器(覆盖路径)
     except Exception as e:
-        print(f"❌ 加载图片时出错: {e}")
+        print(f"加载图片时出错: {e}")
         return
     
     截图计数 = 0
@@ -164,7 +164,7 @@ def 主函数():
     while True:
         读取成功, 帧 = 摄像头.read()
         if not 读取成功:
-            print("❌ 读取帧时出错")
+            print("读取帧时出错")
             break
         
         # 镜像翻转图像以自然显示
